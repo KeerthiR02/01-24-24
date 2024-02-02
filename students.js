@@ -1,4 +1,5 @@
-//student details
+//create database
+//create collection
 
 db.createCollection("details")
 db.details.insertOne({Emp_ID: "10025AE336",
