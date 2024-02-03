@@ -1,4 +1,5 @@
 //Create collection
+//student details
 db.createCollection("details")
 db.details.insertOne({Emp_ID: "10025AE336",
 Personal_details:{
@@ -16,6 +17,7 @@ Address: {
     State: "Telangana"
 }})
 
+//Query 2
 db.details.insertOne({id: POST_ID,
 title: TITLE_OF_POST,
 description: POST_DESCRIPTION,
