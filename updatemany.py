@@ -20,7 +20,7 @@ try:
     select_accounts = {"type": "card"}
 
     # Print original document
-    set_field = {"$set": {"minimum_balance": 50.0}}
+    set_field = {"$set": {"Amount": 50.0}}
 
     # Write an expression that adds to the target account balance by the specified amount.
     result = accounts_collection.update_many(select_accounts, set_field)
