@@ -12,14 +12,14 @@ try:
     # Send a ping to confirm a successful connection
     client.admin.command('ping')
 
-    # Get reference to 'bank' database
+   
     db = client.Monthly_Expense
 
     # Get reference to 'accounts' collection
     accounts_collection = db.Transactions
 
     # inserting one account
-    documents_to_find = {"Amount": {"$gt": 150}}
+    documents_to_find = {"Type":"Cash"}
 
     # Write an expression that selects the documents matching the query constraint in the 'accounts' collection.
     cursor = accounts_collection.find(documents_to_find)
