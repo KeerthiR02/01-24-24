@@ -19,7 +19,7 @@ try:
     accounts_collection = db.Transactions
 
     # Filter by ObjectId
-    document_to_delete = {"1": ObjectId("65d640d362360168c9535923")}
+    document_to_delete = {"_id": ObjectId("65d65c1296f22ef88d76f1c9")}
 
     # Search for document before delete
     print("Searching for target document before delete: ")
