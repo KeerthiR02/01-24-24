@@ -18,7 +18,7 @@ try:
     accounts_collection = db.Transactions
 
     # Filter
-    document_to_update = {'1': ObjectId('65d63f6f4a1042ed9ad85c95')}
+    document_to_update = {'_id': ObjectId('65d658d5e41f462db6f8fb36')}
 
     # Update
     add_to_balance = {"$inc": {"Amount": 150}}
