@@ -10,7 +10,7 @@ try:
     # Send a ping to confirm a successful connection
     client.admin.command('ping')
 
-    # Get reference to 'bank' database
+   
     db = client.Monthly_Expense
 
     # Get reference to 'accounts' collection
