@@ -20,11 +20,11 @@ try:
 
     # inserting one account
     doccument_to_find = {
-        '1': ObjectId('65d632f2834a2f0dd77e0a79'),
+        '_id': ObjectId('65d658b33c67f6e861331c2b'),
     }
 
     # Write an expression that inserts the 'new_account' document into the 'accounts' collection.
-    result = accounts_collection.insert_one(doccument_to_find)
+    result = accounts_collection.Find_one(doccument_to_find)
 
     pprint.pprint(result)
 
