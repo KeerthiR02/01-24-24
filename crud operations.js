@@ -2,21 +2,21 @@
 db.createCollection("users")
 
 #create_operation to insert a single document into a collection
-db.users.insertOne({name: "Angela", age: 27,});
+db.users.insertOne({name: "Preethi", age: 19,});
 
 #create_operation to insert multiple documents into a collection
 db.users.insertMany([
     {
-        name: "Angela",
-        age: 27,
+        name: "Preethi",
+        age: 19,
     },
     {
-        name: "Dwight",
-        age: 30,
+        name: "Honey",
+        age: 20,
         
     },
     {
-        name: "Jim",
+        name: "Sonia",
         age: 29,
     }
 ]);
@@ -26,21 +26,21 @@ db.users.insertMany([
 db.users.find()
 
 #to retrieve a single document object
-db.users.findOne({ name: "Angela" })
+db.users.findOne({ name: "Honey" })
 
 #update_operations
 #to update single document
-db.users.updateOne({ name: "Jim" }, { $set: { email: "Jim@gmail.com" } })
+db.users.updateOne({ name: "Preethi" }, { $set: { email: "Preethi@gmail.com" } })
 
 #to update multiple documents
-db.users.updateMany({ age: { $lt: 40 } }, { $set: { status: "active" } })
+db.users.updateMany({ age: { $lt: 28 } }, { $set: { status: "active" } })
 
 #delete_operations
 #to remove a single document
-db.users.deleteOne({ name: "Jim" })
+db.users.deleteOne({ name: "Honey" })
 
 #to remove multiple documnets
-db.users.deleteMany({ age: { $lt: 30 } })
+db.users.deleteMany({ age: { $lt: 25 } })
 
 #to remove an entire collection
 db.users.drop()
