@@ -1,11 +1,10 @@
 
-
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
-import datetime
+from bson.objectid import ObjectId
 from pprint import pprint
+uri = "mongodb+srv://keerthi2556:Reddy2002@cluster0.eaiaoy5.mongodb.net/?retryWrites=true&w=majority"
 
-uri = "mongodb+srv://keerthi2556:Reddy2002@cluster0.eaiaoy5.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 # Create a new client and connect to the server
 client = MongoClient(uri, server_api=ServerApi('1'))
 
@@ -13,20 +12,23 @@ try:
     # Send a ping to confirm a successful connection
     client.admin.command('ping')
 
-    # Get reference to 'bank' database
-    db = client.bank
+    
+    db = client.Monthly_Expense
 
     # Get reference to 'accounts' collection
-    accounts_collection = db.accounts
+    accounts_collection = db.Transactions
 
     # inserting one account
     new_account = {
-        "account_holder": "Linus Torvalds",
-        "account_id": "MDB829001337",
-        "account_type": "checking",
-        "balance": 50352434,
-        "last_updated": datetime.datetime.utcnow(),
-    }
+
+"Month": "January",
+"Category": "Food",
+"Description": "outside Food",
+"Date": "21-01-24",
+"Type": "Card",
+"Amount":50.0
+
+}
 
     # Write an expression that inserts the 'new_account' document into the 'accounts' collection.
     result = accounts_collection.insert_one(new_account)
@@ -40,40 +42,95 @@ except Exception as e:
 finally:
     client.close()
 
-#insertManyWithCRUD
+
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
 import datetime
+uri = "mongodb+srv://keerthi2556:Reddy2002@cluster0.eaiaoy5.mongodb.net/?retryWrites=true&w=majority"
 
-uri = "mongodb+srv://keerthi2556:Reddy2002@cluster0.eaiaoy5.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 # Create a new client and connect to the server
 client = MongoClient(uri, server_api=ServerApi('1'))
+
+
+
+
 
 try:
     # Send a ping to confirm a successful connection
     client.admin.command('ping')
 
-    # Get reference to 'bank' database
-    db = client.bank
+    
+    db = client.Monthly_Expense
 
-    # Get reference to 'accounts' collection
-    accounts_collection = db.accounts
+    accounts_collection = db.Transactions
+
 
     # inserting many accounts
     new_accounts = [
-        {
-            "account_id": "MDB011235813",
-            "account_holder": "Ada Lovelace",
-            "account_type": "checking",
-            "balance": 60218,
-        },
-        {
-            "account_id": "MDB829000001",
-            "account_holder": "Muhammad ibn Musa al-Khwarizmi",
-            "account_type": "savings",
-            "balance": 267914296,
-        },
-    ]
+  {
+"Month": "January",
+"Category": "Food",
+"Description": "outside Food",
+"Date": "21-01-24",
+"Type": "Card",
+"Amount":"50.0"
+
+},
+
+{ 
+
+"Month": "February",
+"Category": "Groceries",
+"Description": "vegetables",
+"Date": "25-02-24",
+"Type": "Cash",
+"Amount":"140.0"
+
+},
+
+{ 
+
+"Month": "March",
+"Category": "rent",
+"Description": "House Rent",
+"Date": "01-03-24",
+"Type": "Cash",
+"Amount":"600.0"
+
+
+},
+
+{
+
+"Month": "April",
+"Category": "Electricity bill",
+"Description": "Utilities",
+"Date": "01-04-24",
+"Type": "Card",
+"Amount":"140.0"
+
+},
+{
+
+"Month": "May",
+"Category": "movie",
+"Description": "movie ticket",
+"Date": "06-05-24",
+"Type": "Card",
+"Amount":"200.0"
+
+},
+{
+
+"Month": "June",
+"Category": "Birthday",
+"Description": "Birthday Party",
+"Date": "06-06-24",
+"Type": "Card",
+"Amount":"1500.0"
+
+}
+]
 
     # Write an expression that inserts the 'new_account' document into the 'accounts' collection.
     result = accounts_collection.insert_many(new_accounts)
@@ -88,33 +145,33 @@ except Exception as e:
 finally:
     client.close()
 
-#findOneUsingCRUD
-
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
 from bson.objectid import ObjectId
 from pprint import pprint
-uri = "mongodb+srv://keerthi2556:Reddy2002@cluster0.eaiaoy5.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+uri = "mongodb+srv://keerthi2556:Reddy2002@cluster0.eaiaoy5.mongodb.net/?retryWrites=true&w=majority"
+
 # Create a new client and connect to the server
 client = MongoClient(uri, server_api=ServerApi('1'))
+
 
 try:
     # Send a ping to confirm a successful connection
     client.admin.command('ping')
 
-    # Get reference to 'bank' database
-    db = client.bank
+    
+    db = client.Monthly_Expense
 
     # Get reference to 'accounts' collection
-    accounts_collection = db.accounts
+    accounts_collection = db.Transactions
 
     # inserting one account
     doccument_to_find = {
-        "_id": ObjectId("65c6e79199dc107c71275362")
+        '_id': ObjectId('65d658b33c67f6e861331c2b'),
     }
 
     # Write an expression that inserts the 'new_account' document into the 'accounts' collection.
-    result = accounts_collection.insert_one(doccument_to_find)
+    result = accounts_collection.Find_one(doccument_to_find)
 
     pprint.pprint(result)
 
@@ -124,28 +181,28 @@ except Exception as e:
 finally:
     client.close()
 
-#findManyUsingCRUD
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
 from bson.objectid import ObjectId
-import pprint
-uri = "mongodb+srv://keerthi2556:Reddy2002@cluster0.eaiaoy5.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+from pprint import pprint
+uri = "mongodb+srv://keerthi2556:Reddy2002@cluster0.eaiaoy5.mongodb.net/?retryWrites=true&w=majority"
 
 # Create a new client and connect to the server
 client = MongoClient(uri, server_api=ServerApi('1'))
+
 
 try:
     # Send a ping to confirm a successful connection
     client.admin.command('ping')
 
-    # Get reference to 'bank' database
-    db = client.bank
+   
+    db = client.Monthly_Expense
 
     # Get reference to 'accounts' collection
-    accounts_collection = db.accounts
+    accounts_collection = db.Transactions
 
     # inserting one account
-    documents_to_find = {"balance": {"$gt": 4700}}
+    documents_to_find = {"Type":"Cash"}
 
     # Write an expression that selects the documents matching the query constraint in the 'accounts' collection.
     cursor = accounts_collection.find(documents_to_find)
@@ -163,12 +220,11 @@ except Exception as e:
 finally:
     client.close()
 
-#updateOneUsingCRUD
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
 from bson.objectid import ObjectId
 import pprint
-uri = "mongodb+srv://keerthi2556:Reddy2002@cluster0.eaiaoy5.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+uri = "mongodb+srv://keerthi2556:Reddy2002@cluster0.eaiaoy5.mongodb.net/?retryWrites=true&w=majority"
 
 # Create a new client and connect to the server
 client = MongoClient(uri, server_api=ServerApi('1'))
@@ -177,17 +233,17 @@ try:
     # Send a ping to confirm a successful connection
     client.admin.command('ping')
 
-    # Get reference to 'bank' database
-    db = client.bank
+   
+    db = client.Monthly_Expense
 
     # Get reference to 'accounts' collection
-    accounts_collection = db.accounts
+    accounts_collection = db.Transactions
 
     # Filter
-    document_to_update = {"_id": ObjectId("65c6e79199dc107c71275362")}
+    document_to_update = {'_id': ObjectId('65d658d5e41f462db6f8fb36')}
 
     # Update
-    add_to_balance = {"$inc": {"balance": 100}}
+    add_to_balance = {"$inc": {"Amount": 150}}
 
     # Print original document
     pprint.pprint(accounts_collection.find_one(document_to_update))
@@ -205,13 +261,11 @@ except Exception as e:
 finally:
     client.close()
 
-#updateManyUsingCRUD
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
 from bson.objectid import ObjectId
 import pprint
-uri = "mongodb+srv://keerthi2556:Reddy2002@cluster0.eaiaoy5.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
-
+uri = "mongodb+srv://keerthi2556:Reddy2002@cluster0.eaiaoy5.mongodb.net/?retryWrites=true&w=majority"
 # Create a new client and connect to the server
 client = MongoClient(uri, server_api=ServerApi('1'))
 
@@ -219,17 +273,17 @@ try:
     # Send a ping to confirm a successful connection
     client.admin.command('ping')
 
-    # Get reference to 'bank' database
-    db = client.bank
+   
+    db = client.Monthly_Expense
 
     # Get reference to 'accounts' collection
-    accounts_collection = db.accounts
+    accounts_collection = db.Transactions
 
     # Filter
-    select_accounts = {"account_type": "savings"}
+    select_accounts = {"type": "card"}
 
     # Print original document
-    set_field = {"$set": {"minimum_balance": 100}}
+    set_field = {"$set": {"Amount": 50.0}}
 
     # Write an expression that adds to the target account balance by the specified amount.
     result = accounts_collection.update_many(select_accounts, set_field)
@@ -244,13 +298,12 @@ except Exception as e:
 finally:
     client.close()
 
-#deleteOneUsingCRUD
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
 from bson.objectid import ObjectId
 import pprint
 
-uri = "mongodb+srv://keerthi2556:Reddy2002@cluster0.eaiaoy5.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+uri = "mongodb+srv://keerthi2556:Reddy2002@cluster0.eaiaoy5.mongodb.net/?retryWrites=true&w=majority"
 
 # Create a new client and connect to the server
 client = MongoClient(uri, server_api=ServerApi('1'))
@@ -259,14 +312,14 @@ try:
     # Send a ping to confirm a successful connection
     client.admin.command('ping')
 
-    # Get reference to 'bank' database
-    db = client.bank
+   
+    db = client.Monthly_Expense
 
     # Get reference to 'accounts' collection
-    accounts_collection = db.accounts
+    accounts_collection = db.Transactions
 
     # Filter by ObjectId
-    document_to_delete = {"_id": ObjectId("65c6e79199dc107c71275362")}
+    document_to_delete = {"_id": ObjectId("65d65c1296f22ef88d76f1c9")}
 
     # Search for document before delete
     print("Searching for target document before delete: ")
@@ -286,15 +339,13 @@ except Exception as e:
     print(e)
 finally:
     client.close()
-
 #deleteManyUsingCRUD
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
 from bson.objectid import ObjectId
 import pprint
 
-uri = "mongodb+srv://keerthi2556:Reddy2002@cluster0.eaiaoy5.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
-
+uri = "mongodb+srv://keerthi2556:Reddy2002@cluster0.eaiaoy5.mongodb.net/?retryWrites=true&w=majority"
 # Create a new client and connect to the server
 client = MongoClient(uri, server_api=ServerApi('1'))
 
@@ -302,14 +353,14 @@ try:
     # Send a ping to confirm a successful connection
     client.admin.command('ping')
 
-    # Get reference to 'bank' database
-    db = client.bank
+    
+    db = client.Monthly_Expense
 
     # Get reference to 'accounts' collection
-    accounts_collection = db.accounts
+    accounts_collection = db.Transactions
 
     # Filter by ObjectId
-    documents_to_delete = {"balance": {"$gt": 100000}}
+    documents_to_delete = {"Amount": {"$lt": 100.0}}
 
     # Search for sample document before delete
     print("Searching for sample target document before delete: ")
