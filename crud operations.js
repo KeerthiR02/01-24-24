@@ -26,18 +26,18 @@ db.users.insertMany([
 db.users.find()
 
 #to retrieve a single document object
-db.users.findOne({ name: "Jim" })
+db.users.findOne({ name: "Angela" })
 
 #update_operations
 #to update single document
-db.users.updateOne({ name: "Angela" }, { $set: { email: "angela@gmail.com" } })
+db.users.updateOne({ name: "Jim" }, { $set: { email: "Jim@gmail.com" } })
 
 #to update multiple documents
-db.users.updateMany({ age: { $lt: 30 } }, { $set: { status: "active" } })
+db.users.updateMany({ age: { $lt: 40 } }, { $set: { status: "active" } })
 
 #delete_operations
 #to remove a single document
-db.users.deleteOne({ name: "Angela" })
+db.users.deleteOne({ name: "Jim" })
 
 #to remove multiple documnets
 db.users.deleteMany({ age: { $lt: 30 } })
