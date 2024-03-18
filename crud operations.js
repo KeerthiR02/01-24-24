@@ -28,6 +28,14 @@ db.users.find()
 #to retrieve a single document object
 db.users.findOne({ name: "Honey" })
 
+#findmodify 
+
+    db.podcasts.findAndModify({
+  query: {_id: ObjectId("65c45e54c6d23febaede0df0")},
+  update: {$inc: {downloads: 1}},
+  new: true,
+})
+
 #update_operations
 #to update single document
 db.users.updateOne({ name: "Preethi" }, { $set: { email: "Preethi@gmail.com" } })
