@@ -1,0 +1,36 @@
+from pymongo.mongo_client import MongoClient
+from pymongo.server_api import ServerApi
+from bson.objectid import ObjectId
+import pprint
+uri = "mongodb+srv://keerthi2556:Reddy2002@cluster0.eaiaoy5.mongodb.net/?retryWrites=true&w=majority"
+# Create a new client and connect to the server
+client = MongoClient(uri, server_api=ServerApi('1'))
+
+try:
+    # Send a ping to confirm a successful connection
+    client.admin.command('ping')
+
+   
+    db = client.Monthly_Expense
+
+    # Get reference to 'accounts' collection
+    accounts_collection = db.Transactions
+
+    # Filter
+    select_accounts = {"type": "card"}
+
+    # Print original document
+    set_field = {"$set": {"Amount": 50.0}}
+
+    # Write an expression that adds to the target account balance by the specified amount.
+    result = accounts_collection.update_many(select_accounts, set_field)
+
+    # Print updated document
+    print("Documents matched: " + str(result.matched_count))
+    print("Documents updated: " + str(result.modified_count))
+    pprint.pprint(accounts_collection.find_one(select_accounts))
+
+except Exception as e:
+    print(e)
+finally:
+    client.close()
